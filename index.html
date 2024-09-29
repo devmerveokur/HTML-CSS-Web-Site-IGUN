@@ -1,0 +1,197 @@
+<!-- Shift + Alt + F ile kod güzelleştirme yaparak kodları daha kolay okunur hale getirdim.  -->
+<!-- Görseldeki renkleri bulurken color picker sitesinden, yazı tipini bulurken fontsquirrel sitesinden 
+ faydalandım -->
+<!DOCTYPE html> <!-- Dokümanın HTML5 sürümünde olduğunu gösterir -->
+<html lang="tr"> <!-- Doküman dilimizin Türkçe olduğunu belirtir -->
+
+<head>
+    <meta charset="UTF-8"> <!-- UTF-8 karakter seti  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Üst sekmede görünen ve arama motorlarında başlık olarak gözükecek kısım  -->
+    <title>HTML Web Sitesi Ödev 1 - Merve Okur</title>
+    
+
+    <!-- Görseldeki yazı tipini, font identifier (fontsquirrel) sitesinde aratarak yazı tipinin Poppins 
+     olduğunu öğrendim ve bu yazı stilini kullanabilmek için google fonts'tan yerleştirme kodu ekledim -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- style tagleri arasında css özellikleri -->    
+    <style>
+        body { 
+            /* bütün body'e margin ve padding 0 vererek sayfanın kenar ve iç boşluklarını sıfırladım */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex; /* headerdaki logo, menü ve butonun yan yana bir düzende durmasını sağladı. */
+            padding: 30px 80px 5px; /* Sırasıyla üst, sağ ve sol, alt iç boşluklar */
+        }
+
+        .logo {
+            width: 50px; /* logonun genişliği */
+            height: auto; /* logonun yüksekliğinin otomatik ayarlanıp, bozulmaması için  */
+            margin-right: 40px; /* sağ dış boşluk */
+        }
+
+        nav ul {
+            list-style-type: none; /* ul etiketinden gelen madde işaretlerini kaldırdım */
+            margin-top: 12px; /* üst dış boşluk */
+
+        }
+
+        nav ul li {
+            display: inline; /* menü elemanlarını yan yana getirir */
+            margin-right: 60px; /* menü elemanlarının arasında ve son elemanın sağındaki boşluklar */
+            font-family: 'Poppins', sans-serif; /* Poppins yazı tipi  */
+            font-weight: 500; /* font kalınlığı */
+
+        }
+
+        nav ul li a {
+            text-decoration: none; /* a etiketinden gelen alt çizgiyi kaldırdım */
+            color: #2c2a2b; /* menü elemanlarının renginin hex kodu */
+        }
+
+        nav ul li a:hover { /* menü elemanlarının üzerine gelince çalışacak */
+            color: #d492c0; /* üzerinde olunan menü elemanının rengi */
+        }
+
+        button {
+            margin-top: 7px; /* butonun üst dış boşluğu */
+            margin-left: 300px; /* butona sol dış boşluk vererek daha sağa yaslı hale getirdim */
+            background-color: #2c2a2b; /* color picker yardımıyla görseldeki buton renginin hex kodunu almıştım, 
+            burda da onu kullandım */
+            color: #fff; /* buton yazısının rengi */
+            font-size: 16px; /* butonun yazı boyutu */
+            font-family: 'Poppins', sans-serif; /* butonun yazı tipi ailesi */
+            font-weight: 500; /* yazı kalınlığı */
+            border: none; /* butonun borderını kaldırdım */
+            border-radius: 5px; /* 5px vererek köşelerini hafif yuvarladım */
+            cursor: pointer; /* butonun üzerine geldiğimizde mouse'un el işareti haline gelmesi, tıklanabilir alan olduğunu gösterir */
+            width: 120px; /* buton genişliği */
+            height: 30px; /* buton yüksekliği */
+        }
+
+        button:hover {
+            background-color: #4e4c4d; /* butonun üstüne geldiğimizde alacağı arkaplan rengi */
+            color: #fff; /* butonun üstüne geldiğimizde alacağı yazı rengi */
+        }
+
+        .slider {
+            width: 1100px; /* slider adlı classta yer alan görselin genişliği */
+            margin: 40px; /* üst alt sağ sol boşluklar */
+            border: 2px solid #2c2a2b; /* sırasıyla kenarlıkların kalınlığı, çizgi türü düz çizgi ve rengi  */
+        }
+
+        .yazi {
+            font-family: 'Poppins', sans-serif; /* yazı tipi ailesi */
+            font-weight: 500; /* yazı kalınlığı */
+        }
+
+        h1 {
+            font-size: 50px; /* h1 başlık etiketinin yazı boyutunu biraz daha 
+            büyüttüm, görselde daha büyük göründüğü için */
+            line-height: 60px; /* aynı etikette yazdığım başlığın bir kısmını br etiketiyle 
+            alt satıra geçirdiğim için ikisi arasındaki satır boşluğunu ayarladım görseldekine uygun olacak şekilde */
+            margin-bottom: 0px; /* alt dış boşluk */
+        }
+
+        h2 {
+            font-size: 30px; /* h2 başlık etiketinin yazı boyutunu değiştirdim */
+            margin-top: 5px; /* üst dış boşluk */
+        }
+
+        .metin {
+            font-size: 16px; /* metin classlı p etiketi içerisindeki yazının yazı boyutu */
+            text-align: justify; /* metni hem sağ ve hem sola yasladım */
+            margin-top: 5px; /* üst dış boşluk */
+        }
+
+        .gorsel {
+            width: 500px; /* gorselin genişliği */
+            margin-right: 40px; /* sağ dış boşluk vererek diğer alanlarla aynı doğrultuda bitmesini sağladım */
+            border-radius: 5px; /* kenarlarını 5px yuvarlattım */
+        }
+
+        .icerik {
+            display: flex; /* icerik classında yer alan öğelerin yan yana konumlanmasını sağladım  */
+            margin-left: 80px; /* sol dış boşluk vererek diğer alanlarla aynı doğrultuyu yakalamaya çalıştım  */
+            margin-bottom: 60px; /* alt dış boşluk */
+        }
+
+        footer {
+            height: 100px; /* alt bölümün yüksekliği */
+            background-color: #2c2a2b; /* arkaplan rengi */
+            color: #fff; /* yazı rengi */
+            font-family: 'Poppins', sans-serif; /* yazı tipi ailesi */
+            font-weight: 500; /* yazı kalınlığı */
+            font-size: 13px; /* yazı boyutu */
+            display: flex; /* esnek konumlandırma */
+            justify-content: center; /* yatay olarak ortaladım */
+            align-items: center; /* dikey olarak ortaladım */
+        }
+    </style>
+</head>
+
+<body> 
+
+    <header> <!-- sayfanın üst bölümü 3 alandan oluşuyor; logo, menü ve buton -->
+        <a href="#"> <!-- a etiketi içerisinde img etiketiyle logoyu ekledim, 
+            böylelikle logo da tıklanabilir bir alan oldu -->
+            <img class="logo" src="img/logo.png" alt="Logo"> <!-- logo isimli class verdim 
+            style tagleri içerisinden özellik verebilmek için (diğer img etiketleriyle karışmaması için), 
+            src ile img klasörü içerisinde logo görselini ekledim, alt ile görsel yüklenmediği durumda 
+            görünecek yazıyı belirledim -->
+        </a>
+
+        <nav> <!-- semantik navigasyon - menü etiketi -->
+            <ul> <!-- ul li a etiketleri içerisinde menüyü oluşturdum, a etiketiyle link özelliği verdim -->
+                <li><a href="#">Anasayfa</a></li>
+                <li><a href="#">Hakkımızda</a></li>
+                <li><a href="#">Portfolyo</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+        </nav>
+
+        <button>BUTON</button> <!-- buton oluşturdum -->
+    </header>
+
+    <hr> <!-- yatay çizgi -->
+
+    <main> <!-- ana içeriğin yer aldığı semantik etiket -->
+        <section>  <!-- semantik bölüm etiketi -->
+            <figure> <!-- semantik görsel etiketi -->
+                <img class="slider" src="img/slider.jpg" alt="Slider"> 
+            </figure>
+        </section>
+
+        <div class="icerik">
+            <div class="yazi">
+                <h1>Lorem Ipsum <br> Dolor Sit Amet</h1> <!-- br etiketiyle aynı satırdaki yazının alt satıra 
+                geçmesini sağladım -->
+                <h2>Lorem Ipsum</h2>
+                <p class="metin">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptatibus voluptates doloribus iure ullam cupiditate porro
+                    quidem voluptate asperiores assumenda quis repellendus quaerat,
+                    consectetur fugiat, temporibus dicta illum, accusamus error id. Lorem ipsum dolor fugiat
+                </p>
+            </div>
+
+            <figure>
+                <img class="gorsel" src="img/keyboard.jpg" alt="Keyboard">
+            </figure>           
+        </div>
+    </main>
+
+    <footer> <!-- sayfanın alt bölümü -->
+        <p>&copy; TÜM HAKLARI SAKLIDIR</p> 
+    </footer>
+
+</body>
+
+</html>
